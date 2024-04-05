@@ -1,12 +1,15 @@
 package org.experis.javawishlist;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class Wishlist {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Scanner scan = new Scanner(System.in);
 
@@ -45,5 +48,24 @@ public class Wishlist {
         }while (!exit);
 
         scan.close();
+
+        // scrivo su file
+
+        try {
+            File file = new File("./resources/list.txt");
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            FileWriter writer = new FileWriter(file.getAbsoluteFile(), true);
+            // devo scrivere sul file l'arraylist gifts
+            for (Gift g : gifts) {
+                writer.write(g.toString() + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

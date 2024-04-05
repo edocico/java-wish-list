@@ -2,7 +2,7 @@ package org.experis.javawishlist;
 
 import java.util.Objects;
 
-public class Gift {
+public class Gift implements Comparable<Gift> {
     private String name;
 
     // constructor
@@ -49,5 +49,13 @@ public class Gift {
     @Override
     public int hashCode() {
         return Objects.hashCode(getName());
+    }
+
+
+    // compare
+
+    @Override
+    public int compareTo(Gift o) {
+        return this.getName().compareTo(o.getName());
     }
 }

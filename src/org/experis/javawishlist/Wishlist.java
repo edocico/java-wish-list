@@ -1,6 +1,7 @@
 package org.experis.javawishlist;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,6 +32,11 @@ public class Wishlist {
                 case "N":
                     exit = true;
                     System.out.println("Hai aggiunto " + gifts.size() +  " regali alla lista");
+                    Collections.sort(gifts);
+
+                    for (Gift g : gifts) {
+                        System.out.println(g);
+                    }
                     break;
                 default:
                     System.out.println("comando non valido");
